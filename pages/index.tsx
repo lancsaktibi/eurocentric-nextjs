@@ -1,9 +1,7 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
-import Link from 'next/link';
-import Date from '../components/date';
 import { GetStaticProps } from 'next';
+import Card from '../components/card';
 
 // get sorted posts from the posts.js script in the lib folder
 import { getSortedPostsData } from '../lib/posts';
@@ -29,32 +27,16 @@ export default function Home({allPostsData}: {
 }) {
   return (
     <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      <section className="font-bold">
-        <p>Welcome!</p>
-      </section>
-      <section>
-        <Link href={`/about`}>
-                  <a>About</a>
-                </Link>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
-        </ul>
+      <div id='welcome' className='text-xl p-6 m-6 rounded-lg shadow-lg bg-gray-100 '>
+          <p className='flex justify-center'>Welcome to the Home Page!</p>
+          <p className='flex justify-center'>More information is coming soon...</p>
+          <br />
+          <p className='flex justify-center text-lg'>Have a look to the lastest posts:</p>
+      </div>
+      <section id='lastPosts' className="grid lg:grid-cols-3">
+        {allPostsData.map(({ id, date, title }) => (
+          <Card  link = {id} date = {date} longText = {title} />
+        ))}
       </section>
     </Layout>
   );

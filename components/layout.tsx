@@ -1,10 +1,8 @@
 // call Layout to style pages individually
 
 import Head from 'next/head';
-import Image from 'next/image';
-import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link';
+import { Navbar } from './navbar';
 
 const name = 'Tibor Lancsak';
 export const siteTitle = 'subsidiarity.eu';
@@ -14,8 +12,10 @@ export default function Layout({ children, home }: {
   home?: boolean
 }) {
   return (
-    <div className={styles.container}>
+    <div className="container mx-auto px-1">
       <Head>
+        <meta charSet="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
@@ -30,12 +30,10 @@ export default function Layout({ children, home }: {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
-        <p>subsidiarity.eu</p>
-      </header>
+      <Navbar />
       <main>{children}</main>
       {!home && (
-        <div className={styles.backToHome}>
+        <div>
           <Link href="/">
             <a>← Back to home</a>
           </Link>
