@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
 import Image from 'next/image';
 
 export default function About() {
@@ -14,16 +13,16 @@ export default function About() {
             <Image
                 priority
                 src="/images/profile.jpeg"
-                className={utilStyles.borderCircle}
+                className='rounded-full w-32'
                 height={108}
                 width={108}
             />
-            <h2 className={utilStyles.headingLg}>
+            <h2>
                 <p>Tibor Lancsak</p>
             </h2>
           </>
       </header>
-      <section className={utilStyles.headingMd}>
+      <section>
         <p>A Javascript / Next.js programmer</p>
         <p>
           This is a sample website - built as per the 
